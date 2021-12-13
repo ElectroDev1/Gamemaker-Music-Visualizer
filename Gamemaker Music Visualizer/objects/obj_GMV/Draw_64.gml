@@ -61,9 +61,17 @@ else if(OnAudio==2){ //List of pre existing songs
           if(mouse_check_button_pressed(mb_left)){
 			  scr_load_music(_str,0,1,1,1,1);
 			  
+			  filename=_str;
+			  
+			  ini_open("musicdata.ini");
+			  
+			  global.loopstart = ini_read_real(filename,"loopstart",-4);
+			  global.loopend   = ini_read_real(filename,"loopend",-4);
+			  
+			  ini_close();
+			  
 			  alarm[0]=2;
 			  
-			  filename=_str;
 			  OnAudio=1;
 		  }
 		

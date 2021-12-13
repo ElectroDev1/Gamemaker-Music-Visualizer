@@ -19,18 +19,6 @@ if i_d == msg
 						 buffer_save(musicbuffer,working_directory+"Music/"+string(filename)+".ogg");
 						 show_debug_message("Saved new music file as '"+string(filename));
 						 
-						 /*var _file = file_text_open_write("musicdata.ini");
-						 
-						 file_text_write_string(_file,"# Music data file");  
-						 file_text_writeln(_file);
-                         file_text_write_string(_file,"# The section is used for reference in the game");
-                         file_text_writeln(_file);
-                         file_text_write_string(_file,"# .ogg at the end of the file name is not needed");
-                         file_text_writeln(_file);
-                         file_text_write_string(_file,"# loop start and end are in seconds")
-						 
-						 file_text_close(_file);*/
-						 
 						 //Set data in the .ini file
 						 ini_open("musicdata.ini");
 						 
