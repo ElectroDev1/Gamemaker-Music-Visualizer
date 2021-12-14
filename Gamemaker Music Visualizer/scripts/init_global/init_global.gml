@@ -6,6 +6,8 @@ global.currentstream = -4;
 global.loopstart = -4;
 global.loopend = -4;
 
+Volume=1;
+
 ini_open("musicdata.ini");
 
 var _count =-1;
