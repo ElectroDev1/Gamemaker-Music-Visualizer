@@ -1,7 +1,7 @@
 <img src="https://github.com/ElectroDev1/Gamemaker-Music-Visualizer/blob/main/logo.png">
 
 # Gamemaker-Music-Visualizer
- A little tool to easily test songs in engine and set loop points
+A program made to easily test songs directly in-engine, in it you can preview songs from anywhere in your pc, test loop points and more, all values can be copied and put into your projects in a click, and everything is saved for future uses.
 
 <hr>
 
