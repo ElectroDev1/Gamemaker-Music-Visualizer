@@ -168,7 +168,6 @@ else if(OnAudio==1){
 	var _pad = 8;
 	
 	//Change audio position
-	if(!useloops){
 	   
 	   if(mouse_in_rectangle(_X-10,_Y,_X+_W+10,_Y+_H)){
 		  if(mouse_check_button(mb_left)){
@@ -179,8 +178,7 @@ else if(OnAudio==1){
 			  
 		  }   
 	   }
-	   
-	}
+	
 	
 	var _rW = (_W/_length)*_playpos;
 	
