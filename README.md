@@ -10,3 +10,8 @@ You can load files from anywhere in the system or from already used songs, every
 Set loop points by dragging them on the timeline, loop end defines where the song will stop and go back to the loop start, and I'm sure you can figure out what loop start means.
 Music files must be in .ogg format.
 
+<hr>
+
+#Credits
+
+[nkrapivin](https://github.com/nkrapivin)'s [Discord RPC extension](https://github.com/nkrapivin/NekoPresence) for Gamemaker
