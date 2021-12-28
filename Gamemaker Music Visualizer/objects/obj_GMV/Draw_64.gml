@@ -214,8 +214,8 @@ else if(OnAudio==1){
 	
 	if(global.loopstart>=0){
 	
-	   var _sec = global.loopstart%60;
-	   var _min = global.loopstart/60;
+	   var _sec = global.loopstart;
+	   var _min = floor(_sec/60);
 	   draw_set_color(c_white);
 	   if(editloop==1){draw_set_color(c_red);
 		   
@@ -241,7 +241,7 @@ else if(OnAudio==1){
 	   draw_set_color(c_white);
 	   draw_set_halign(fa_center);draw_set_valign(fa_bottom);
 	   draw_text_transformed(_loopX+10,_Y-32,
-	   "L.S."+"\n"+string_replace_all( string_format(_min,2,0)," ","0" )+":"+string_replace_all(string_format(_sec,2,2)," ","0")
+	   "L.S."+"\n"+string_replace_all( string_format(_min%60,2,0)," ","0" )+":"+string_replace_all(string_format(_sec%60,2,2)," ","0")
 	   ,1,1,0);
 	     
 	}
@@ -252,8 +252,8 @@ else if(OnAudio==1){
 	
 	if(global.loopend>=0){
 	
-	   var _sec = global.loopend%60;
-	   var _min = global.loopend/60;
+	   var _sec = global.loopend;
+	   var _min = floor(_sec/60);
 	   draw_set_color(c_white);
 	   if(editloop==2){draw_set_color(c_red);
 		
@@ -280,7 +280,7 @@ else if(OnAudio==1){
 	   draw_set_color(c_white);
 	   draw_set_halign(fa_center);draw_set_valign(fa_top);
 	   draw_text_transformed(_loopX+10,_Y+_H+34,
-	   "L.E."+"\n"+string_replace_all( string_format(_min,2,0)," ","0" )+":"+string_replace_all(string_format(_sec,2,2)," ","0")
+	   "L.E."+"\n"+string_replace_all( string_format(_min%60,2,0)," ","0" )+":"+string_replace_all(string_format(_sec%60,2,2)," ","0")
 	   ,1,1,0);
 	   
 	}
@@ -290,10 +290,10 @@ else if(OnAudio==1){
 	//Song time
 	draw_set_halign(fa_right);draw_set_valign(fa_middle);
 	
-	var _sec = (_playpos%60)
-	var _min = (_playpos/60);
+	var _sec = (_playpos)
+	var _min = floor(_sec/60);
 	
-	draw_text(_X-_pad*2,_Y+_H/2+4,string_replace_all( string_format(_min,2,0)," ","0" )+":"+string_replace_all(string_format(_sec,2,2)," ","0"));
+	draw_text(_X-_pad*2,_Y+_H/2+4,string_replace_all( string_format(_min%60,2,0)," ","0" )+":"+string_replace_all(string_format(_sec%60,2,2)," ","0"));
 	
 	//Song length
 	draw_set_halign(fa_left);
