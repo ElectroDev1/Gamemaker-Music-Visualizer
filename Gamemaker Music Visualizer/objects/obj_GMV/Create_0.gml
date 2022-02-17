@@ -6,7 +6,7 @@ using a .ini file
 
 // Current version - 1.1.1
 
-windowName = "Gamemaker Music Visualizer v1.1.1";
+windowName = "Gamemaker Music Visualizer v1.1.2";
 window_set_caption(windowName);
 
 //Editor page
@@ -51,7 +51,8 @@ SelectMode = 0;
 //Answer type for the Async Dialog event
 enum Questions {
 	 new_file,
-	 set_time
+	 set_time,
+	 set_ls,set_le
 }
 AnswerWait = -1;
 
@@ -60,6 +61,8 @@ msg=0;
 
 Volume=0;
 VolumeEditing=0;
+
+doloop = 0;
 
 //Initialize globals
 init_global();

@@ -73,12 +73,24 @@ if(!OnAudio){//If no audio has been selected
 	
 	//Loop track at loop points
 	if(audio_is_playing(global.stream)){
+		
+		var _length = audio_sound_length(global.stream);
 
 	   if(audio_sound_get_track_position(global.currentstream)>=global.loopend)&&(global.loopend>=0)&&(useloops){
 		  if(global.loopstart>=0){ audio_sound_set_track_position(global.currentstream,global.loopstart); }   
 	   }
+	   
+	   
 	
 	}
+	
+	var _length = audio_sound_length(global.stream);
+	if(!paused)&&(audio_sound_get_track_position(global.currentstream)>=_length)
+	   &&( ( (global.loopend<_length)&&(useloops) )||(useloops==0) ) {
+		   show_debug_message("Restarting song");
+		   audio_sound_set_track_position(global.currentstream,_length*!doloop);
+		   paused=0;
+	   }
 	
 	audio_sound_gain(global.currentstream,Volume,1);
 	

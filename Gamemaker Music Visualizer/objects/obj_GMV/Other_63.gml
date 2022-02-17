@@ -39,7 +39,7 @@ if i_d == msg
 						 init_global();
 						 
 						 //Load song
-						 scr_load_music(filename,0,1,1,1);
+						 scr_load_music(filename,0,1,0,1);
 						 alarm[0]=2;
 						 
 						 //Reset other things
@@ -65,6 +65,24 @@ if i_d == msg
 						 
 						 audio_sound_set_track_position(global.currentstream,min(_length,_time));
 					 
+					 break;
+					 
+					 case Questions.set_ls:
+					   
+					    var _time = ds_map_find_value(async_load,"result");
+						var _length = audio_sound_length(global.stream);
+						
+						global.loopstart = min(_length,_time);
+					   
+					 break;
+					 
+					 case Questions.set_le:
+					   
+					    var _time = ds_map_find_value(async_load,"result");
+						var _length = audio_sound_length(global.stream);
+						
+						global.loopend = min(_length,_time);
+					   
 					 break;
 					 
 			  }

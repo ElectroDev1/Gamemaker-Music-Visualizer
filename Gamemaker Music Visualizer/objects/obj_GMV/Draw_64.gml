@@ -32,24 +32,19 @@ if(!OnAudio){
 	
 	//Text
 	draw_set_halign(fa_left);
-	draw_text(10,_roof-42.5,"by Electro");
-	if(mouse_in_rectangle(10-4,_roof-42.5-6,10+string_width("by Electro")+4,_roof-42.5+string_height("E")+2)){
+	
+	var _pres_string = "A tool by Electro";
+	
+	draw_text(10,_roof-42.5,_pres_string+" - v1.1.2");
+	if(mouse_in_rectangle(10-4,_roof-42.5-6,10+string_width(_pres_string)+4,_roof-42.5+string_height("E")+2)){
 	  if(mouse_check_button_pressed(mb_left)){
-var _url = "https://twitter.com/EIectroDev";
-var _path = game_save_id + "/shortcut.url";
-var _txt = file_text_open_write(_path);
-// note: use '' instead of @'' in GMS1
-file_text_write_string(_txt, @"[{000214A0-0000-0000-C000-000000000046}]
-Prop3=19,11
-[InternetShortcut]
-IDList=
-URL=" + _url);
-file_text_close(_txt);
-execute_shell_simple(_path);
-file_delete(_path);
+         execute_shell_simple( "https://electrodev1.github.io/" );
 	  }
 	  
-	  draw_rectangle(10-4,_roof-42.5-6,10+string_width("by Electro")+4,_roof-42.5+string_height("E")+2,1);
+	  draw_set_alpha(0.2);
+	  draw_rectangle(10-4,_roof-42.5-6,10+string_width(_pres_string)+4,_roof-42.5+string_height("E")+2,0);
+	  draw_set_alpha(1);
+	  draw_rectangle(10-4,_roof-42.5-6,10+string_width(_pres_string)+4,_roof-42.5+string_height("E")+2,1);
 	  
 	}
 	
@@ -105,7 +100,7 @@ else if(OnAudio==2){ //List of pre existing songs
 		_Y+string_height(_str)+4,1);
 
           if(mouse_check_button_pressed(mb_left)){ //Select song
-			  scr_load_music(_str,0,1,1,1,1);
+			  scr_load_music(_str,0,1,0,1,1);
 			  
 			  filename=_str;
 			  
@@ -148,7 +143,19 @@ else if(OnAudio==1){
 	draw_text_transformed(room_width/2,15+string_height("M")*2+8,"Visualizing '"+string(filename)+"'",1.5,1.5,0);
 	
 	if(editloop!=0){
-	draw_text_transformed(room_width/2,15+string_height("M")*5+12,"Press Enter to stop editing loop points",1,1,0);
+	draw_text_transformed(room_width/2,15+string_height("M")*5+12,"Press Enter to stop editing loop points\nPress Alt to type loop point time",1,1,0);
+	
+	   if(keyboard_check_pressed(vk_alt)){
+		   if(editloop==1){
+			   AnswerWait = Questions.set_ls;
+			   msg = get_string_async("Set loop start at (in seconds)","");
+		   }
+		   if(editloop==2){
+			   AnswerWait = Questions.set_le;  
+			   msg = get_string_async("Set loop end at (in seconds)","");
+		   }
+	   }
+	
 	}
 	
 	//Draw timeline
@@ -174,7 +181,7 @@ else if(OnAudio==1){
          
 			 var _mouse_x_in_bar = clamp(device_mouse_x_to_gui(0)-_X,0,_W);
 			 var _scale = (_mouse_x_in_bar/_W);
-			 audio_sound_set_track_position(global.currentstream,_scale*_length);
+			 audio_sound_set_track_position(global.currentstream, min(_scale*_length,audio_sound_length(global.stream)));
 			  
 		  }   
 	   }
@@ -354,6 +361,13 @@ else if(OnAudio==1){
 		  AnswerWait = Questions.set_time;
 	}
 	
+	var _c = c_white; if(doloop){_c=c_gray;}
+	var _loop = draw_button_ext(4,room_height-80,mouse_check_button(mb_left),"click","Loop",1,2,1.5,_c);
+	
+	if(_loop){
+	   doloop=!doloop;	
+	}
+	
 	//Play/pause
 	if((!_playing)||(_paused))&&(paused){
 	   var _Bstr = "Play";	
@@ -369,7 +383,7 @@ else if(OnAudio==1){
 		  audio_resume_sound(global.currentstream);   
 		  paused=0;
 	   }else if(!_playing){
-		  global.currentstream = audio_play_sound(global.stream,0,1); 
+		  global.currentstream = audio_play_sound(global.stream,0,0); 
 		  paused=0;
 	   }else{
 		  audio_pause_sound(global.currentstream)   
