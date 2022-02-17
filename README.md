@@ -14,4 +14,6 @@ Music files must be in .ogg format.
 
 # Credits
 
+Execute Shell Simple by <a href="https://github.com/YellowAfterlife">YellowAfterLife</a>
+<br>
 [nkrapivin](https://github.com/nkrapivin)'s [Discord RPC extension](https://github.com/nkrapivin/NekoPresence) for Gamemaker
