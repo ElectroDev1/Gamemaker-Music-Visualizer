@@ -38,7 +38,7 @@ if(!OnAudio){
 	draw_text(10,_roof-42.5,_pres_string+" - v1.1.2");
 	if(mouse_in_rectangle(10-4,_roof-42.5-6,10+string_width(_pres_string)+4,_roof-42.5+string_height("E")+2)){
 	  if(mouse_check_button_pressed(mb_left)){
-         execute_shell_simple( "https://electrodev1.github.io/" );
+         execute_shell_simple( "https://electrodev1.github.io/home/" );
 	  }
 	  
 	  draw_set_alpha(0.2);
